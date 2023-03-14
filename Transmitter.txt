@@ -5,7 +5,7 @@
 #include <SoftwareSerial.h>
 TinyGPSPlus gps;
 SoftwareSerial ss(4, 3);
-RF24 radio(9, 10); // CE, CSN
+RF24 radio(9, 10);
 const byte address[6] = "robotistan100";
 #define TRIG 7 //Module   pins
 #define ECHO 6 
@@ -22,7 +22,7 @@ void setup() {
   radio.stopListening();
   radio.enableDynamicPayloads();
   radio.powerUp();
-  pinMode(TRIG, OUTPUT); // Initializing Trigger Output and   Echo Input 
+  pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT_PULLUP);
 }
 void loop() {
@@ -61,12 +61,12 @@ static void smartDelay(unsigned long ms)
 }
 int mesafe()
 {
- digitalWrite(TRIG, LOW); // Set the trigger pin to low for 2uS 
+ digitalWrite(TRIG, LOW);
  delayMicroseconds(2);   
- digitalWrite(TRIG, HIGH); // Send a 10uS   high to trigger ranging 
+ digitalWrite(TRIG, HIGH);
  delayMicroseconds(20); 
  digitalWrite(TRIG,   LOW); // Send pin low again 
- int distance = pulseIn(ECHO, HIGH,26000); //   Read in times pulse 
- distance= distance/58; //Convert the pulse duration   to distance
+ int distance = pulseIn(ECHO, HIGH,26000);
+ distance= distance/58;
  return distance;
 }
