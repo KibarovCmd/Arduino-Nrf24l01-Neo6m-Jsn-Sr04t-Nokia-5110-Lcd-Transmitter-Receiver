@@ -76,7 +76,7 @@ void loop() {
     display.setTextSize(1);
     display.setTextColor(BLACK);
     display.setCursor(0,0);
-    display.println("Signal?");
+    display.println("signal?");
     /*
     display.display();
     display.clearDisplay();
