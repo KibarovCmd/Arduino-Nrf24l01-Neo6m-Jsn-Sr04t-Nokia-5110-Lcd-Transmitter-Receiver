@@ -3,7 +3,7 @@
 #include <RF24.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
-RF24 radio(9, 10); // CE, CSN
+RF24 radio(9, 10);
 const byte address[10] = "robotistan100";
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
 float list[3];
