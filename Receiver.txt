@@ -1,0 +1,72 @@
+#include <SPI.h>
+#include <nRF24L01.h>
+#include <RF24.h>
+#include <TinyGPSPlus.h>
+#include <SoftwareSerial.h>
+TinyGPSPlus gps;
+SoftwareSerial ss(4, 3);
+RF24 radio(9, 10); // CE, CSN
+const byte address[6] = "robotistan100";
+#define TRIG 7 //Module   pins
+#define ECHO 6 
+float list[3];
+
+void setup() {
+  Serial.begin(9600);
+  ss.begin(9600); 
+  radio.begin();
+  radio.openWritingPipe(address);
+  radio.setChannel(0x76);
+  radio.setPALevel(RF24_PA_MAX);
+  radio.setDataRate(RF24_250KBPS);
+  radio.stopListening();
+  radio.enableDynamicPayloads();
+  radio.powerUp();
+  pinMode(TRIG, OUTPUT); // Initializing Trigger Output and   Echo Input 
+  pinMode(ECHO, INPUT_PULLUP);
+}
+void loop() {
+ list[0] = gps.location.lat();
+ list[1] = gps.location.lng();
+ list[2] = mesafe();
+ radio.write(&list, sizeof(list));
+ Serial.println(list[0],6);
+ Serial.println(list[1],6);
+ Serial.println(list[2]);
+ smartDelay(1000);
+}
+
+static void smartDelay(unsigned long ms)
+{
+  unsigned long start = millis();
+  do 
+  {
+    while (ss.available())
+    {
+      gps.encode(ss.read());
+    }
+    if(millis() - start + 0.026022 < ms)
+    {
+      list[2] = mesafe();
+    }  
+    else
+    {
+      list[2] = 0.0;
+    }
+    Serial.println(list[0],6);
+    Serial.println(list[1],6);
+    Serial.println(list[2]);
+    radio.write(&list, sizeof(list));
+  } while (millis() - start < ms);
+}
+int mesafe()
+{
+ digitalWrite(TRIG, LOW); // Set the trigger pin to low for 2uS 
+ delayMicroseconds(2);   
+ digitalWrite(TRIG, HIGH); // Send a 10uS   high to trigger ranging 
+ delayMicroseconds(20); 
+ digitalWrite(TRIG,   LOW); // Send pin low again 
+ int distance = pulseIn(ECHO, HIGH,26000); //   Read in times pulse 
+ distance= distance/58; //Convert the pulse duration   to distance
+ return distance;
+}
