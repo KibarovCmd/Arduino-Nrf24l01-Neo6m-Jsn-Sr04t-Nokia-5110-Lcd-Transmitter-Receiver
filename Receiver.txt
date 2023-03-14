@@ -36,13 +36,13 @@ void loop() {
     display.setTextSize(1);
     display.setTextColor(BLACK);
     display.setCursor(0,0);
-    display.println("Enlem: ");
+    display.println("latitude: ");
     display.setTextColor(BLACK);
     display.setCursor(0,8);    
     display.println(list[0]);
     display.setTextColor(BLACK);
     display.setCursor(0,16);
-    display.println("Boylam: ");
+    display.println("longitude: ");
     display.setTextColor(BLACK);
     display.setCursor(0,24);    
     display.println(list[1]);
@@ -59,7 +59,7 @@ void loop() {
     display.setTextSize(1);
     display.setTextColor(BLACK);
     display.setCursor(0,0);
-    display.println("Uzaklik: ");
+    display.println("distance: ");
     display.setTextColor(BLACK);
     display.setCursor(0,8);    
     display.println(list[2]);  
