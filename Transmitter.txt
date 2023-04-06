@@ -20,7 +20,7 @@ void setup() {
   radio.setPALevel(RF24_PA_MAX);
   radio.setDataRate(RF24_250KBPS);
   radio.stopListening();
-  radio.enableDynamicPayloads();
+  radio.enableDynamicPayloads(); //If there is data loss during transmission, try removing this code.
   radio.powerUp();
   pinMode(TRIG, OUTPUT);
   pinMode(ECHO, INPUT_PULLUP);
