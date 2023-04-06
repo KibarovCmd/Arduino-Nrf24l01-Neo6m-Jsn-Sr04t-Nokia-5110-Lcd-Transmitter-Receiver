@@ -6,7 +6,7 @@
 TinyGPSPlus gps;
 SoftwareSerial ss(4, 3);
 RF24 radio(9, 10);
-const byte address[5] = "00001";/*Daha kompekles 5 baytlık bir sifre secebilirsiniz.*/
+const byte address[5] = {0x12, 0x23, 0x45, 0x67, 0x89};
 #define TRIG 7 //Module   pins
 #define ECHO 6 
 float list[3];
