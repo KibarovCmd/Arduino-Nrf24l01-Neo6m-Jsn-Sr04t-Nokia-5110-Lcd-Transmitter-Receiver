@@ -4,7 +4,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_PCD8544.h>
 RF24 radio(9, 10); // CE, CSN
-const byte address[5] = "00001";/*Daha kompleks 5 baytlık bir sifre secebilirsiniz.*/
+const byte address[5] = {0x12, 0x23, 0x45, 0x67, 0x89};
 Adafruit_PCD8544 display = Adafruit_PCD8544(7, 6, 5, 4, 3);
 float list[3];
 int b_int = 1;
