@@ -78,7 +78,7 @@ const unsigned char MarilynMonroe0 [] PROGMEM = {
   list[2] = map(list[2], 0, 500, 0, 48);for(int j = 0; j <= 48; j++) {if(j < list[2]) {display.setTextSize(1); 
   display.setTextColor(BLACK); display.setCursor(i, j); display.println("."); display.display();}
   else {display.setTextSize(1); display.setTextColor(WHITE); display.setCursor(i, j); display.println("."); display.display();}}}
-  display.clearDisplay();}/*display.display(); display.clearDisplay();*/}} else {display.display(); display.clearDisplay();
+    display.clearDisplay();}/*display.display(); display.clearDisplay();*/}} else {display.display(); display.clearDisplay();
   display.setTextSize(1); display.setTextColor(BLACK); display.setCursor(0,0); display.println("No signal"); /*display.display(); 
   display.clearDisplay();*/ }
 }
