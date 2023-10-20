@@ -70,15 +70,15 @@ const unsigned char MarilynMonroe0 [] PROGMEM = {
   } while(millis()-b_time < 3000); b_int = 5; } radio.read(list, sizeof(list)); int okunan = analogRead(A0);
   Serial.println(list[0]); Serial.println(list[1]);Serial.println(list[2]); if(okunan < 512) 
   { display.display(); display.clearDisplay();display.setTextSize(1); display.setTextColor(BLACK); display.setCursor(0,0);
-  display.println("Enlem: "); display.setTextColor(BLACK); display.setCursor(0,8); display.println(list[0],6); 
-  display.setTextColor(BLACK); display.setCursor(0,16); display.println("Boylam: "); display.setTextColor(BLACK); 
+  display.println("Lan: "); display.setTextColor(BLACK); display.setCursor(0,8); display.println(list[0],6); 
+  display.setTextColor(BLACK); display.setCursor(0,16); display.println("Lat: "); display.setTextColor(BLACK); 
   display.setCursor(0,24); display.println(list[1],6);/*display.display(); display.clearDisplay();*/}
   else { display.display(); display.clearDisplay(); while(okunan >= 512) {for(int i = 84; i >= 0; i--) { okunan = analogRead(A0); 
   radio.read(list, sizeof(list)); if(list[2] >= 500) {list[2] = 500;} if(list[2] <= 20) {list[2] = 0;} 
   list[2] = map(list[2], 0, 500, 0, 48);for(int j = 0; j <= 48; j++) {if(j < list[2]) {display.setTextSize(1); 
   display.setTextColor(BLACK); display.setCursor(i, j); display.println("."); display.display();}
   else {display.setTextSize(1); display.setTextColor(WHITE); display.setCursor(i, j); display.println("."); display.display();}}}
-	display.clearDisplay();}/*display.display(); display.clearDisplay();*/}} else {display.display(); display.clearDisplay();
-  display.setTextSize(1); display.setTextColor(BLACK); display.setCursor(0,0); display.println("Sinyal Yok"); /*display.display(); 
+  display.clearDisplay();}/*display.display(); display.clearDisplay();*/}} else {display.display(); display.clearDisplay();
+  display.setTextSize(1); display.setTextColor(BLACK); display.setCursor(0,0); display.println("No signal"); /*display.display(); 
   display.clearDisplay();*/ }
 }
