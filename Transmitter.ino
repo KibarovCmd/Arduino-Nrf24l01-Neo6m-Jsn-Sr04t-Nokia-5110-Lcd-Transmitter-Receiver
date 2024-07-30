@@ -3,7 +3,7 @@
 #include <RF24.h>
 #include <TinyGPSPlus.h>
 #include <SoftwareSerial.h>
-#define TRIG 7  //Module   pins
+#define TRIG 7
 #define ECHO 6
 TinyGPSPlus gps;
 SoftwareSerial ss(4, 3);
@@ -57,7 +57,7 @@ int distanceF() {
   digitalWrite(TRIG, HIGH);
   delayMicroseconds(20);
   digitalWrite(TRIG, LOW);
-  /* Send pin low again */ int distance = pulseIn(ECHO, HIGH, 26000);
+  int distance = pulseIn(ECHO, HIGH, 26000);
   distance = distance / 58;
   return distance;
 }
